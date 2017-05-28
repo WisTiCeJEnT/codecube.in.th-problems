@@ -58,6 +58,10 @@ int main()
     }
     fmax(-1);
     drop(-1);
+    int E[n];
+    E[0] = D[0];
+    for(int i=1;i<n;i++)
+        E[i] = E[i-1]+D[i];
     vector<int> ans;
     int point = 0;
     for(int i=0;i<m;i++)
@@ -77,10 +81,7 @@ int main()
         }
         else
         {
-            int a = 0;
-            for(int i=0;i<point;i++)
-                a = a + D[i];
-            ans.push_back(a);
+            ans.push_back(E[point-1]);
         }
     }
     while(!ans.empty())
