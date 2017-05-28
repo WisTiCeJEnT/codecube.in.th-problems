@@ -13,28 +13,21 @@ vector<int> B;
 vector<int> D;
 void drop(int me)
 {
-    int son = 0;
-    int gs = 0;
-    int hs = n+1;
+    priority_queue<pair<int,int> ,vector<pair<int,int> > ,greater<pair<int,int> > > pii;
     for(int i=0;i<n;i++)
     {
         if(A[i].first==me+1&&B[i]==0)
         {
-            son++;
-            if(hs>A[i].second)
-            {
-                hs = A[i].second;
-                gs = i;
-            }
+            pii.push(make_pair(A[i].second,i));
         }
     }
-    if(son>0)
-        drop(gs);
-    else
+    while(!pii.empty())
     {
-        B[me] = 1;
-        D.push_back(me+1);
+        drop(pii.top().second);
+        pii.pop();
     }
+    D.push_back(me+1);
+    B[me] = 1;
 }
 int fmax(int s)
 {
@@ -94,5 +87,9 @@ int main()
         cout << ans.front() << endl;
         ans.erase(ans.begin());
     }
+    /*for(int i=0;i<n;i++)
+    {
+        cout << D[i] << " ";
+    }*/
 	return 0;
 }
