@@ -26,8 +26,12 @@ void drop(int me)
         drop(pii.top().second);
         pii.pop();
     }
-    D.push_back(me+1);
-    B[me] = 1;
+    if(me!=-1)
+    {
+        D.push_back(me+1);
+        B[me] = 1;
+    }
+
 }
 int fmax(int s)
 {
@@ -53,10 +57,7 @@ int main()
         B.push_back(0);
     }
     fmax(-1);
-    for(int i=0;i<n;i++)
-    {
-        drop(-1);
-    }
+    drop(-1);
     vector<int> ans;
     int point = 0;
     for(int i=0;i<m;i++)
