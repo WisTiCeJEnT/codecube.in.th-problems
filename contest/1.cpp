@@ -16,20 +16,44 @@ int main()
     {
         if(ss != true)        
             break;
-        mm += m[i];
-        ff += f[i];
-        if(mm==ff)
+        if(m[i]>f[i])
         {
-            mm = 0;
-            ff = 0;
-            kk = k;
+            for(int j=1;j<=k;j++)
+            {
+                if(f[i+j]>=m[i]-f[i])
+                {
+                    f[i+j] -= m[i]-f[i];
+                    f[i] = m[i];
+                    break;
+                }
+                else
+                {
+                    f[i] += f[i+j];
+                    f[i+j] = 0;
+                }
+            }
         }
-        else if(kk>0)
+        else if(m[i]<f[i])
         {
-            kk--;
+            for(int j=1;j<=k;j++)
+            {
+                if(m[i+j]>=f[i]-m[i])
+                {
+                    m[i+j] -= f[i]-m[i];
+                    m[i] = f[i];
+                    break;
+                }
+                else
+                {
+                    m[i] += m[i+j];
+                    m[i+j] = 0;
+                }
+            }
         }
-        else
+        if(m[i]!=f[i])
+        {
             ss = false;
+        }
     }
     if(ss)
         cout << "YES" << endl;
