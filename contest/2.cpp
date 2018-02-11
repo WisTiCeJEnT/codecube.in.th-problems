@@ -10,6 +10,7 @@ int main()
     int len = 0;
     while(s[len]!='\0')
         len++;
+    s = s + s;
     for(int i=0;i<n;i++)
     {
         int l,r;
@@ -21,20 +22,13 @@ int main()
         }
         l--;
         r--;
-/*        if (l>r)
-        {
-            int t = l;
-            l=r;
-            r=t;
-        }
-*/
         int a=0;
         int b=0;
         if(r<l)
             r+=len;
-        for(int j=0;j<=r-l;j++)
+        for(int j=l;j<=r;j++)
         {
-            if(s[(j+l)%len]=='(')
+            if(s[j]=='(')
                 a++;
             else
                 b++;
