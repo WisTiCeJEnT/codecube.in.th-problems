@@ -2,18 +2,38 @@
 using namespace std;
 int main()
 {
-    float x,y,z;
-    long a,b,c;
+    int lis[3];
     for(int i=0;i<1000;i++)
     {
-//        cin >> x >> y >> z;
-        a = 10000000000*x;
-        b = 10000000000*y;
-        c = 10000000000*z;
-        cout << a+c << endl;
-        if(a+b==c)
+        string s;
+//        cin >> s;
+        getline(cin,s);
+        lis[0] = 0;
+        lis[1] = 0;
+        lis[2] = 0;
+        int j = 0;
+        int k = 0;
+        while(s[j]!='\0')
+        {
+            if(s[j]=='.')
+            {
+                j++;
+                continue;
+            }
+            else if(s[j]==' ')
+            {
+                j++;
+                k++;
+                continue;
+            }
+            lis[k] *= 10;
+            lis[k] += ((int)s[j] - (int)'0');
+            j++;
+        }
+        if(lis[0]+lis[1]==lis[2])
             cout<<"Correct"<<endl;
         else
             cout << "Wrong" << endl;
+//        cout << lis[0] << lis[1] << lis[2] << endl;
     }
 }
