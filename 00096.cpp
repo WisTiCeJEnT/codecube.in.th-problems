@@ -35,9 +35,9 @@ int main()
             if(atk[i]>=0)
             {
                 ans[i]+=2;
-                l--;
-                r++;
-                ll--;
+                ll = l;
+                l = ind(l-1);
+                r = ind(r+1);
             }
             else
                 break;
