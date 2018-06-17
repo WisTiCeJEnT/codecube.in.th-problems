@@ -4,7 +4,7 @@ int main()
 {
     bool ans[1000];
     int lis[3];
-    for(int i=0;i<1000;i++)
+    for(int i=0;i<1;i++)
     {
         string s;
 //        cin >> s;
@@ -43,7 +43,7 @@ int main()
         }
 //        cout << lis[0] << lis[1] << lis[2] << endl;
     }
-    for(int i=0;i<1000;i++)
+    for(int i=0;i<1;i++)
     {
         if(ans[i]==true)
             cout << "Correct" << endl;
